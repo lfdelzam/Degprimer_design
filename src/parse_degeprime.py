@@ -3,7 +3,6 @@
 import os
 import argparse
 import string
-import numpy as np
 
 usage = 'parse_degeprime.py -i -o -c -g -s'
 description = 'This program selects primers suggested by degeprime above user-defined coverage and GC content'
@@ -104,9 +103,6 @@ if not os.path.exists(args.d):
 if not os.path.exists(os.path.join(args.d, "Figures")):
     os.makedirs(os.path.join(args.d, "Figures"))
 
-coverage = np.empty((0))
-GCcont = np.empty((0))
-
 outfile = os.path.join(args.d, args.o)
 with open(args.i, "r") as fin, open(outfile, "w") as fout:
     for line in fin:
@@ -122,12 +118,10 @@ with open(args.i, "r") as fin, open(outfile, "w") as fout:
             seq = line[6]
             all_primers = undegenerating(seq)
             GCrange = []
-            coverage = np.append(coverage, cov)
             for p in all_primers.values():
                 GCrange.append(gc_cont(p))
 
             GC = min(GCrange)
-            GCcont = np.append(GCcont, GC)
 
             if (GC >= float(args.g) and cov >= float(args.c)):
                 line.append(GC)
