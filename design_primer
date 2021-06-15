@@ -54,7 +54,7 @@ rule multidegeprime:
   message: "DEGEPRIME -Finding primers per position -d {params.ds} -l {params.ls} "
   shell: '''
             perl src/DEGEPRIME/DegePrime.pl -i {input} -d {params.ds} -l {params.ls} -o {params.of} > {params.log}
-            python src/parse_degeprime.py -i {params.of} -o {params.osf} -s d{params.ds}_l{params.ls} -d {params.osd}
+            python src/parse_degeprime.py -i {params.of} -o {params.osf} -d {params.osd}
          '''
 
 rule primer_screen_list:
