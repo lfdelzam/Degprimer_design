@@ -3,7 +3,7 @@ import os
 #snakefile for design of primers
 configfile: "./config_primer_design.json"
 
-ds=config["degenerecies"].split(",")
+ds=config["degeneracies"].split(",")
 ls=config["primer_sizes"].split(",")
 
 rule all:
@@ -75,9 +75,8 @@ rule primer_screen_fasta:
 rule mfe_hairpin:
   input: expand("potential_primers/best_primers_pre_selection_{suffix}.fasta", suffix=config["file_suffix_name"])
   output: expand("potential_primers/hairpin_best_primers_{suffix}", suffix=config["file_suffix_name"])
-  threads: config["threads"]
   message: "Checking hairpin"
-  shell: "src/MFEprimer3/mfeprimer-3.2.2-linux-amd64 hairpin -i {input} -o {output} -c {threads}"
+  shell: "src/MFEprimer3/mfeprimer-3.2.2-linux-amd64 hairpin -i {input} -o {output}"
 
 rule hairpin_screen:
   input: i=expand("potential_primers/hairpin_best_primers_{suffix}", suffix=config["file_suffix_name"]),
@@ -89,9 +88,8 @@ rule hairpin_screen:
 rule mfe_dimer:
   input: expand("potential_primers/primers_after_hairpin_screen_{suffix}.fasta", suffix=config["file_suffix_name"])
   output: expand("potential_primers/dimer_best_primers_{suffix}", suffix=config["file_suffix_name"])
-  threads: config["threads"]
-  message: "Dimer check 1 on pre_selected primers"
-  shell: "src/MFEprimer3/mfeprimer-3.2.2-linux-amd64 dimer -i {input} -o {output} -c {threads}"
+  message: "Dimer check on pre_selected primers"
+  shell: "src/MFEprimer3/mfeprimer-3.2.2-linux-amd64 dimer -i {input} -o {output}"
 
 rule dimer_screen:
   input: i=expand("potential_primers/dimer_best_primers_{suffix}", suffix=config["file_suffix_name"]),
