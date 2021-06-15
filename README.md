@@ -13,7 +13,7 @@ The pipeline uses the programes:
 	
 ## Create conda environment ##
 
-conda create -n primers -c bioconda blast=2.5.0 snakemake=3.13.3 krona=2.7.1 muscle=3.8.1551
+conda create -n primers -c bioconda snakemake=3.13.3 muscle=3.8.1551
 
 ## Usage ##
 
