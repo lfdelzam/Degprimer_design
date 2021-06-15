@@ -62,7 +62,7 @@ Directory `Results`:
 	file "primers_<file_suffix_name>_table": Lists of selected primers. It includes primer name, sequences, reverse complement, degenerecy, length, GC range, TM range
 
 
-# intermediare output #
+## intermediare output ##
 
 Directory `MSA`: 
 
