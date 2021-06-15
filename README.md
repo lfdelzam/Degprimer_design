@@ -2,11 +2,15 @@
 Command: git clone https://github.com/lfdelzam/primer_desing.git
 
 The pipeline uses the programes:
-	1. [blast](http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs) 2.5.0+
-	2. [snakemake](https://snakemake.github.io) 3.13.3
-	3. [muscle](http://www.drive5.com/muscle) v3.8.1551
-	4. [Degeprime](https://github.com/andand/DEGEPRIME)
-	5. [mfeprimer](https://github.com/quwubin/MFEprimer-3.0/releases/tag/v3.2.2) 3.2.2
+	[blast](http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs) 2.5.0+
+
+[snakemake](https://snakemake.github.io) 3.13.3
+
+[muscle](http://www.drive5.com/muscle) v3.8.1551
+
+[Degeprime](https://github.com/andand/DEGEPRIME)
+
+[mfeprimer](https://github.com/quwubin/MFEprimer-3.0/releases/tag/v3.2.2) 3.2.2
 	
 ## Create conda environment ##
 
