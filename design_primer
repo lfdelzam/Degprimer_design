@@ -5,7 +5,6 @@ configfile: "./config_primer_design.json"
 
 ds=config["degenerecies"].split(",")
 ls=config["primer_sizes"].split(",")
-dimer_cutoffs=config["dimer_cutoffs"].split(",")
 
 rule all:
   input: expand("Results/List_{suffix}.txt", suffix=config["file_suffix_name"])
@@ -22,7 +21,7 @@ rule gff_file:
 
 rule gene_sequences:
   input: gff=config["gff_file"], g=config["tar_file_genomes"]
-  output: os.path.join(config["work_dir"], "gene_sequences", config["file_suffix_name"]+".fna")
+  output: config["gene_sequences"]
   params: os.path.join(config["work_dir"], "temporal_genomes")
   message: "Extracting gene sequences from genomes"
   shell:  '''
@@ -30,7 +29,7 @@ rule gene_sequences:
               python src/from_refseq_gff_to_fasta.py -i {input.gff} -d {params} -o {output}
           '''
 rule msa:
-  input: os.path.join(config["work_dir"], config["file_suffix_name"]+".fna")
+  input: config["gene_sequences"]
   output: os.path.join(config["work_dir"], "MSA", "_".join(["MSA_", config["file_suffix_name"]]))
   params: config["muscle_params"]
   message: "Multiple sequence alignment"
