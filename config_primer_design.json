@@ -11,6 +11,5 @@
   "degenerecies": "4,8,12,18,20,24,32,48,60,80,92,120",
   "primer_sizes": "17,18,19,20,21,22,23,24,25,26",
   "primer_selection_parameters": "-c 0.995 -g 35",
-  "amplicon_size": "200,1000",
-  "threads": 1
+  "amplicon_size": "200,1000"
 }
