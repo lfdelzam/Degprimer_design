@@ -44,8 +44,9 @@ modify the parameters and save changes by taping `ctrl x` and tape `y`
   
   "primer_selection_parameters": "-c 0.995 -g 35", -- -c stands for coverage (fraction) and -g for minimum GC content (%) --
   
-   "amplicon_size": "200,1000" -- minimum and maximum amplicon size --
+  "amplicon_size": "200,1000", -- minimum and maximum amplicon size --
 
+  "threads": 1 -- cpu number to use by MFEprimer
 
 command: 
 `conda activate primers`
