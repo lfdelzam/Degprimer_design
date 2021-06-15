@@ -30,10 +30,6 @@ parser.add_argument(
     dest='g',
     help='gc content threshold, in percentage, default 30',
     default=30)
-# parser.add_argument(
-#    '-t', dest='t', help='tm threshold, in C, default 30', default=30)
-parser.add_argument(
-    '-s', dest='s', help='suffix for figures', required=True)
 
 args = parser.parse_args()
 
@@ -43,7 +39,6 @@ degen = {"R": ["A", "G"], "Y": ["C", "T"], "M": ["A", "C"],
          "H": ["A", "T", "C"], "B": ["C", "G", "T"],
          #       "I": "N" }
          "I": ["A", "G", "C", "T"], "N": ["A", "G", "C", "T"]}
-
 
 def undegenerating(primer):
     total_deg = 1
@@ -80,14 +75,12 @@ def undegenerating(primer):
                 pr += 1
     return primers
 
-
 def gc_cont(new):
     G = new.count("G")
     C = new.count("C")
     S = new.count("S")
     GC = round((G + C + S) * 100 / len(new), 2)
     return GC
-
 
 def revcomp(line):
     old_chars = "ACGTRYMKSWVBDHIN"
@@ -96,8 +89,6 @@ def revcomp(line):
     return new
 
 # creating output directory
-
-
 if not os.path.exists(args.d):
     os.makedirs(args.d)
 if not os.path.exists(os.path.join(args.d, "Figures")):
