@@ -2,7 +2,6 @@
 Command: git clone https://github.com/lfdelzam/primer_desing.git
 
 The pipeline uses the programes:
-
 	1. [blast](http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs) 2.5.0+
 	2. [snakemake](https://snakemake.github.io) 3.13.3
 	3. [muscle](http://www.drive5.com/muscle) v3.8.1551
