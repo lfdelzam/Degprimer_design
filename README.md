@@ -21,20 +21,19 @@ conda create -n primers -c bioconda blast=2.5.0 snakemake=3.13.3 krona=2.7.1 mus
 set pipeline parameters in config_primer_design.json using the command: `nano config_primer_design.json`, 
 modify the parameters and save changes by taping `ctrl x` and tape `y`
 
-{
   "work_dir": "/absolute/path/to/primer_design/",
   
-  "tar_gff_files": "/absolute/pat/to/genome_gff_files.tar",  # tar file downloaded from NCBI
+  "tar_gff_files": "/absolute/pat/to/genome_gff_files.tar",   -- tar file downloaded from NCBI --
   
-  "tar_file_genomes": "/absolute/path/to/genome_fasta.tar",  # tar file downloaded from NCBI
+  "tar_file_genomes": "/absolute/path/to/genome_fasta.tar",   -- tar file downloaded from NCBI --
   
-  "NCBI_gene_name": "your option", # NCBI name of the target gene (required) 
+  "NCBI_gene_name": "your option", -- NCBI name of the target gene (required) --
   
-  "gff_file": "/absolute/path/to/gff_with_selected_gene_annotation.gff", # if not provided, it will be generated using "tar_gff_files", "tar_file_genomes", "NCBI_gene_name"
+  "gff_file": "/absolute/path/to/gff_with_selected_gene_annotation.gff", -- if not provided, it will be generated using "tar_gff_files", "tar_file_genomes", "NCBI_gene_name" --
   
   "file_suffix_name": "your option",
   
-  "gene_sequences": "/absolute/path/to/gene_sequeneces.fna", #if not provided it will be generated using "tar_gff_files", "tar_file_genomes", and "gff_file" 
+  "gene_sequences": "/absolute/path/to/gene_sequeneces.fna",  -- if not provided it will be generated using "tar_gff_files", "tar_file_genomes", and "gff_file" --
   
   "muscle_params": "-maxiters 3",
   
@@ -44,10 +43,10 @@ modify the parameters and save changes by taping `ctrl x` and tape `y`
   
   "primer_sizes": "17,18,19,20,21,22,23,24,25,26",
   
-  "primer_selection_parameters": "-c 0.995 -g 35", # -c stands for coverage (fraction) and -g for minimum GC content (%)
+  "primer_selection_parameters": "-c 0.995 -g 35", -- -c stands for coverage (fraction) and -g for minimum GC content (%) --
   
-   "amplicon_size": "200,1000"
-}
+   "amplicon_size": "200,1000" -- minimum and maximum amplicon size --
+
 
 command: 
 `conda activate primers`
