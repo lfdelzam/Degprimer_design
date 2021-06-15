@@ -1,0 +1,15 @@
+{
+  "work_dir": "/root/PRIMER_DESIGN/",
+  "tar_gff_files": "/root/PRIMER_DESIGN/Raw_file/refseq_genome_assemblies_genome_gff.tar",
+  "tar_file_genomes": "/root/PRIMER_DESIGN/Raw_file/refseq_genome_assemblies_genome_fasta.tar",
+  "NCBI_gene_name": "GroEL",
+  "gff_file": "/root/PRIMER_DESIGN/gff_file/refseq_gff_Vibrio_GroEL",
+  "file_suffix_name": "GroEL_refseq",
+  "muscle_params": "-maxiters 3",
+  "trim_degeprime": "-min 0.9",
+  "degenerecies": "4,8,12,18,20,24,32,48,60,80,92,120",
+  "primer_sizes": "17,18,19,20,21,22,23,24,25,26",
+  "primer_selection_parameters": "-c 0.995 -g 35",
+  "dimer_cutoffs": "cal,cal,0",
+  "amplicon_size": "200,1000"
+}
