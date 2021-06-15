@@ -91,8 +91,6 @@ def revcomp(line):
 # creating output directory
 if not os.path.exists(args.d):
     os.makedirs(args.d)
-if not os.path.exists(os.path.join(args.d, "Figures")):
-    os.makedirs(os.path.join(args.d, "Figures"))
 
 outfile = os.path.join(args.d, args.o)
 with open(args.i, "r") as fin, open(outfile, "w") as fout:
