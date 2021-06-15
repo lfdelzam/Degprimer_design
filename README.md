@@ -18,7 +18,8 @@ conda create -n primers -c bioconda blast=2.5.0 snakemake=3.13.3 krona=2.7.1 mus
 
 ## Usage ##
 
-set pipeline parameters in config_primer_design.json
+set pipeline parameters in config_primer_design.json using the command: `nano config_primer_design.json`, 
+modify the parameters and save changes by taping `ctrl x` and tape `y`
 
 {
   "work_dir": "/absolute/path/to/primer_design/",
