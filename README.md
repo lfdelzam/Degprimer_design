@@ -1,5 +1,5 @@
 ## Installation ##
-Command: git clone https://github.com/lfdelzam/primer_desing.git
+Command: `git clone https://github.com/lfdelzam/primer_desing.git`
 
 The pipeline uses the programes:
 
