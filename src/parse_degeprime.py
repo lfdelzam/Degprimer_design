@@ -4,7 +4,7 @@ import os
 import argparse
 import string
 
-usage = 'parse_degeprime.py -i -o -c -g -s'
+usage = 'parse_degeprime.py -i -o -c -g'
 description = 'This program selects primers suggested by degeprime above user-defined coverage and GC content'
 
 parser = argparse.ArgumentParser(description=description, usage=usage)
