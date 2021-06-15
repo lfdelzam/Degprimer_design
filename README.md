@@ -57,9 +57,11 @@ run the pipeline using the commnad:
 
 ## output ##
 
-Directory `Results`: 
-		file `List_<file_suffix_name>`: List all possible primer paire combinations of selected primers	
-		file `primers_<file_suffix_name>_table`: List of selected primers. It inlcudes primer name, sequences, reverse complement, degenerecy, length, GC range, TM range
+Directory `Results`:
+
+		file "List_<file_suffix_name>": List all possible primer paire combinations of selected primers	
+		
+		file "primers_<file_suffix_name>_table": List of selected primers. It inlcudes primer name, sequences, reverse complement, degenerecy, length, GC range, TM range
 
 
 # intermediare output #
