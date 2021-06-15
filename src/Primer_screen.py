@@ -103,11 +103,9 @@ with  open(args.o, "w") as fout:
                     GC = float(line[7])
                     Posit=line[0]
                     sequ=line[6]
-                    if (GC >= float(args.g) and cov >= float(args.c) ):
-                        if line not in selected_lines:
-                            if (Posit, sequ) not in PRIM:
-                                selected_lines.append(line)
-                                PRIM.add((Posit, sequ))
+                    if (GC >= float(args.g) and cov >= float(args.c) ) and (line not in selected_lines) and ((Posit, sequ) not in PRIM):
+                         selected_lines.append(line)
+                         PRIM.add((Posit, sequ))
 
     selected_lines=sorted(selected_lines, reverse=False, key = lambda x: int(x[0]))
     for item in selected_lines:
