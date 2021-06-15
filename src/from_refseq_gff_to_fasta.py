@@ -157,5 +157,5 @@ def main():
                           if f.endswith(args.e)])  # list of available genomes
     loc = get_locis(args.inf)
     species = extract_sequences(loc, set_of_genomes, args.d, args.out, args.e)
-    print("# Total {} Hsp60-GroEL unique sequences from {} Vibrio species".format(
+    print("# Total {} gene unique sequences from {} Vibrio species".format(
         sum(species.values()), len(species.keys())))
