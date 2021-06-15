@@ -22,17 +22,17 @@ modify the parameters and save changes by taping `ctrl x` and tape `y`
 
   "work_dir": "/absolute/path/to/primer_design/",
   
-  "tar_gff_files": "/absolute/pat/to/genome_gff_files.tar",   -- tar file downloaded from NCBI --
+  "tar_gff_files": "/absolute/pat/to/genome_gff_files.tar",   -- tar file downloaded from NCBI, "no required if "gene_sequences" provided --
   
-  "tar_file_genomes": "/absolute/path/to/genome_fasta.tar",   -- tar file downloaded from NCBI --
+  "tar_file_genomes": "/absolute/path/to/genome_fasta.tar",   -- tar file downloaded from NCBI, "no required if "gene_sequences" provided --
   
   "NCBI_gene_name": "your option", -- NCBI name of the target gene (required) --
   
-  "gff_file": "/absolute/path/to/gff_with_selected_gene_annotation.gff", -- if not provided, it will be generated using "tar_gff_files", "tar_file_genomes", "NCBI_gene_name" --
+  "gff_file": "/absolute/path/to/gff_with_selected_gene_annotation.gff", -- if file doesn't exits, it will be generated using "tar_gff_files", "tar_file_genomes", "NCBI_gene_name", and this filed cannot be empty (path required). "no required if "gene_sequences" provided --
+    
+  "gene_sequences": "/absolute/path/to/gene_sequeneces.fna",  -- if not provided it will be generated using "tar_gff_files", "tar_file_genomes", and "gff_file". 
   
   "file_suffix_name": "your option",
-  
-  "gene_sequences": "/absolute/path/to/gene_sequeneces.fna",  -- if not provided it will be generated using "tar_gff_files", "tar_file_genomes", and "gff_file" --
   
   "muscle_params": "-maxiters 3",
   
