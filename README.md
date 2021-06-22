@@ -8,7 +8,7 @@ The pipeline uses the programs:
 
 [muscle](http://www.drive5.com/muscle) v3.8.1551
 
-[Degeprime](https://github.com/andand/DEGEPRIME)
+[Degeprime](https://github.com/andand/DEGEPRIME) v1.1.0
 
 [mfeprimer](https://github.com/quwubin/MFEprimer-3.0/releases/tag/v3.2.2) 3.2.2
 
