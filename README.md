@@ -1,3 +1,4 @@
+Pipeline designed for Vibrio genus 
 ## Installation ##
 Dowload the pipeline using the command:
 	`git clone https://github.com/lfdelzam/primer_desing.git`
