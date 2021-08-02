@@ -40,7 +40,6 @@ degen = {"R": ["A", "G"], "Y": ["C", "T"], "M": ["A", "C"],
          #       "I": "N" }
          "I": ["A", "G", "C", "T"], "N": ["A", "G", "C", "T"]}
 
-
 def undegenerating(primer):
     total_deg = 1
     changes = []  # List of changes per position
@@ -90,11 +89,16 @@ def revcomp(line):
     return new
 
 # creating output directory
+<<<<<<< HEAD
 
 if not os.path.exists(args.d):
     os.makedirs(args.d)
 if not os.path.exists(os.path.join(args.d, "Figures")):
     os.makedirs(os.path.join(args.d, "Figures"))
+=======
+if not os.path.exists(args.d):
+    os.makedirs(args.d)
+>>>>>>> 933f5ac4aea3669e2d3bbe5c226d9b17e0f9c442
 
 outfile = os.path.join(args.d, args.o)
 with open(args.i, "r") as fin, open(outfile, "w") as fout:
@@ -111,7 +115,10 @@ with open(args.i, "r") as fin, open(outfile, "w") as fout:
             seq = line[6]
             all_primers = undegenerating(seq)
             GCrange = []
+<<<<<<< HEAD
 
+=======
+>>>>>>> 933f5ac4aea3669e2d3bbe5c226d9b17e0f9c442
             for p in all_primers.values():
                 GCrange.append(gc_cont(p))
 
