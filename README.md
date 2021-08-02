@@ -31,7 +31,7 @@ and modify the parameters and save changes by taping `ctrl x` and tape `y`
 
   "tar_file_genomes": "/absolute/path/to/genome_fasta.tar",   -- tar file downloaded from NCBI, "no required if "gene_sequences" provided --
 
-  "NCBI_gene_name": "your option", -- NCBI name of the target protein-coding gene (required) --
+  "NCBI_gene_name": "your option", -- NCBI name of the target protein-coding (CDS) gene (required) --
 
   "gff_file": "/absolute/path/to/gff_with_selected_gene_annotation.gff", -- if file doesn't exits, it will be generated using "tar_gff_files", "tar_file_genomes", "NCBI_gene_name", and this field cannot be empty (path required). "no required if "gene_sequences" provided --
 
