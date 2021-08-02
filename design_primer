@@ -12,21 +12,19 @@ rule all:
 rule gff_file:
   input: config["tar_gff_files"]
   output: config["gff_file"]
-  params: n=config["NCBI_gene_name"], t=os.path.join(config["work_dir"], "temporal_gff")
+  params: n=config["NCBI_gene_name"], t=os.path.join(config["work_dir"], "temporal_gff"), o=config["gff_file"], r="CDS"
   message: "extracting positions from annotation file"
-  shell: '''
-          tar -xvf {input} -C {params.t}
-          ls {params.t}/*.gz | while read file; do lines=$(gunzip -cd $file | grep "{params.n}" | grep "CDS"); echo -e "$file\t$lines" >> {ouput}; done
-         '''
+  shell: "bash src/create_gff.sh {input} {params.t} {params.n} {params.r} {params.o}"
 
 rule gene_sequences:
   input: gff=config["gff_file"], g=config["tar_file_genomes"]
   output: config["gene_sequences"]
-  params: os.path.join(config["work_dir"], "temporal_genomes")
+  params: t=os.path.join(config["work_dir"], "temporal_genomes"), o=config["gene_sequences"], n=config["NCBI_gene_name"]
   message: "Extracting gene sequences from genomes"
   shell:  '''
-              tar -xvf {input.g} -C {params}
-              python src/from_refseq_gff_to_fasta.py -i {input.gff} -d {params} -o {output}
+              bash src/extract_gff.sh {params.t} {input.g}
+              python src/from_refseq_gff_to_fasta.py -i {input.gff} -d {params.t} -o {params.o} -n {params.n}
+              rm -r {params.t}
           '''
 rule msa:
   input: config["gene_sequences"]

@@ -8,7 +8,7 @@ import io
 import gzip
 
 usage = 'from_refseq_gff_to_fasta.py -i -d -e -o'
-description = 'This program retrieves hsp60 sequences, using gff and genome files from refseq NCBI, printing out in 5 -> 3'
+description = 'This program retrieves target gene sequences, using gff and genome files from refseq NCBI, printing out in 5 -> 3'
 
 parser = argparse.ArgumentParser(description=description, usage=usage)
 parser.add_argument(
@@ -26,6 +26,13 @@ parser.add_argument(
     dest='e',
     help='file extention input files',
     default=".fna.gz")
+
+parser.add_argument(
+    '-n',
+    dest='n',
+    help='NCBI gene name',
+    default="GroEL")
+
 parser.add_argument('-o', dest='out', help='output file', required=True)
 
 args = parser.parse_args()
@@ -46,7 +53,7 @@ def get_locis(file):
     # when GroES
             if line.startswith("GCF"):
                 line = line.split("\t")
-                file = line[0][:-7]  # GCF_000006745.1_ASM674v1_genomic
+                file = line[0][:-7] #GCF_000006745.1_ASM674v1_genomic
                 in_genome = line[1]  # NC_002505.1
                 start = line[4]
                 stop = line[5]
@@ -58,9 +65,7 @@ def get_locis(file):
                 start = line[3]
                 stop = line[4]
                 dir = line[6]
-                if (int(loc[file][3]) -
-                    int(loc[file][2])) < (int(stop) -
-                                          int(start)):  # keep the biggest gene sequence
+                if (int(loc[file][3]) - int(loc[file][2])) < (int(stop) - int(start)) :  # keep the biggest gene sequence
                     loc[file] = (in_genome, dir, start, stop)
     return loc
 
@@ -81,11 +86,12 @@ def rev_complement(seq):
     return seq.translate(seq.maketrans("ACGTacgt", "TGCAtgca"))[::-1]
 
 
-def extract_sequences(loc, set_of_genomes, dir_out, file_out_name, ext):
+def extract_sequences(loc, set_of_genomes, dir_out, file_out_name, ext, gene_name):
     '''
     Read Interlevaded/non_interleaved fasta files .gz, when the header is found in the list of locis where the target gene is found, the sequences are extracted and printing out in 5 to 3 direction.
     '''
     species = {}
+    list_str = set()
     for g in loc.keys():  # for each genome where the target gene is present
         if g in set_of_genomes:  # if the genomes is available
             with io.TextIOWrapper(gzip.open(os.path.join(dir_out, g + ext), "rb"), encoding='utf-8') as fg, open(file_out_name, "a") as fout:
@@ -98,7 +104,7 @@ def extract_sequences(loc, set_of_genomes, dir_out, file_out_name, ext):
                         id = line.split()[0][1:]  # NZ_CP046820.1
                         if id == loc[g][0]:
                             header = clean_header_NCBI(line)
-                            header += " [direction=+][gene=GroEL]"
+                            header += " [direction=+][gene="+ gene_name +"]"
                             copy = True
                             counter = 0
                             tocopy = ""
@@ -141,21 +147,26 @@ def extract_sequences(loc, set_of_genomes, dir_out, file_out_name, ext):
                                 copy = False
                         # keeping track of the Vibrio species where the gene is
                         # present
-                                s = re.sub(
+                                sg = re.sub(
                                     "^.*_Vibrio", "Vibrio", header, count=1)
-                                s = s.split("_")[1]
-                                s = s.split()[0]
+                                    #Vibrio_cholerae_strain_NCTC_30 [direction=+][gene=GroEL]
+                                s = sg.split()[0].split("_")[1]
+                                #cholerae
+                                stns = "_".join(sg.split()[0].split("_")[1:])
+                                #cholerae_strain_NCTC_30
+                                list_str.add(stns)
                                 if s in species:
                                     species[s] += 1
                                 else:
                                     species[s] = 1
-    return species
+    return species, list_str
 
 
-def main():
-    set_of_genomes = set([str(f)[:-(len(args.e))] for f in os.listdir(args.d)
+set_of_genomes = set([str(f)[:-(len(args.e))] for f in os.listdir(args.d)
                           if f.endswith(args.e)])  # list of available genomes
-    loc = get_locis(args.inf)
-    species = extract_sequences(loc, set_of_genomes, args.d, args.out, args.e)
-    print("# Total {} Hsp60-GroEL unique sequences from {} Vibrio species".format(
-        sum(species.values()), len(species.keys())))
+
+
+loc = get_locis(args.inf)
+species, strains = extract_sequences(loc, set_of_genomes, args.d, args.out, args.e, args.n)
+print("# Total {} {} unique sequences from {} Vibrio species - {} strains".format(
+        sum(species.values()), args.n, len(species.keys()), len(strains)))
