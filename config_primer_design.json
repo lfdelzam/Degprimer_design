@@ -3,6 +3,7 @@
   "tar_gff_files": "/absolute/path/to/genome_assemblies_genome_gff.tar",
   "tar_file_genomes": "absolute/path/to/genome_assemblies_genome_fasta.tar",
   "NCBI_gene_name": "your option",
+  "NCBI_gene_region": "your option",
   "gff_file": "/absolute/path/to/selected_gene_gff_file",
   "file_suffix_name": "your option",
   "gene_sequences": "/absolute/path/to/gene_sequences.fna",
