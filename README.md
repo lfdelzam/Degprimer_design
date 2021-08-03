@@ -1,4 +1,4 @@
-Pipeline designed for Vibrio genus 
+Pipeline designed for Vibrio genus
 ## Installation ##
 Dowload the pipeline using the command:
 	`git clone https://github.com/lfdelzam/primer_desing.git`
@@ -17,7 +17,7 @@ The pipeline uses the programs:
 
 conda create -n primers -c bioconda snakemake=3.13.3 muscle=3.8.1551
 
-Degeprime and MFEprimer must be manually downloaded 
+Degeprime and MFEprimer must be manually downloaded
 
 ## Usage ##
 
@@ -31,11 +31,15 @@ and modify the parameters and save changes by taping `ctrl x` and tape `y`
 
   "tar_file_genomes": "/absolute/path/to/genome_fasta.tar",   -- tar file downloaded from NCBI, "no required if "gene_sequences" provided --
 
-  "NCBI_gene_name": "your option", -- NCBI name of the target protein-coding (CDS) gene (required) --
+  "NCBI_gene_name": "your option", -- NCBI name of the target gene (required), e.g., "GroEL", "'16S ribosomal RNA'"  --
 
-  "gff_file": "/absolute/path/to/gff_with_selected_gene_annotation.gff", -- if file doesn't exits, it will be generated using "tar_gff_files", "tar_file_genomes", "NCBI_gene_name", and this field cannot be empty (path required). "no required if "gene_sequences" provided --
+  "NCBI_gene_region": "your option", -- standard NCBI region name of the target gene (required), e.g., "CDS", "exon"  --
 
-  "gene_sequences": "/absolute/path/to/gene_sequeneces.fna",  -- if not provided it will be generated using "tar_gff_files", "tar_file_genomes", and "gff_file".
+  "gff_file": "/absolute/path/to/gff_with_selected_gene_annotation.gff", -- if file doesn't exits, it will be generated using "tar_gff_files" --
+
+  "tar_file_genomes", "NCBI_gene_name", and this field cannot be empty (path required). "no required if "gene_sequences" provided --
+
+  "gene_sequences": "/absolute/path/to/gene_sequeneces.fna",  -- if not provided it will be generated using "tar_gff_files", "tar_file_genomes", and "gff_file" --
 
   "file_suffix_name": "your option",
 
@@ -43,9 +47,9 @@ and modify the parameters and save changes by taping `ctrl x` and tape `y`
 
   "trim_degeprime": "-min 0.9",
 
-  "degeneracies": "4,8,12,18,20,24,32,48,60,80,92,120",
+  "degeneracies": "4,20,32",
 
-  "primer_sizes": "17,18,19,20,21,22,23,24,25,26",
+  "primer_sizes": "17,18,19,20,21,22",
 
   "primer_selection_parameters": "-c 0.995 -g 35", -- -c stands for coverage (fraction) and -g for minimum GC content (%) --
 

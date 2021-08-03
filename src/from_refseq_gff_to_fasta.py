@@ -164,16 +164,7 @@ def extract_sequences(loc, set_of_genomes, dir_out, file_out_name, ext, gene_nam
 
 set_of_genomes = set([str(f)[:-(len(args.e))] for f in os.listdir(args.d)
                           if f.endswith(args.e)])  # list of available genomes
-<<<<<<< HEAD
-
-
 loc = get_locis(args.inf)
 species, strains = extract_sequences(loc, set_of_genomes, args.d, args.out, args.e, args.n)
 print("# Total {} {} unique sequences from {} Vibrio species - {} strains".format(
         sum(species.values()), args.n, len(species.keys()), len(strains)))
-=======
-    loc = get_locis(args.inf)
-    species = extract_sequences(loc, set_of_genomes, args.d, args.out, args.e)
-    print("# Total {} gene unique sequences from {} Vibrio species".format(
-        sum(species.values()), len(species.keys())))
->>>>>>> 933f5ac4aea3669e2d3bbe5c226d9b17e0f9c442

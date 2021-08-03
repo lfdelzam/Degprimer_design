@@ -12,7 +12,7 @@ rule all:
 rule gff_file:
   input: config["tar_gff_files"]
   output: config["gff_file"]
-  params: n=config["NCBI_gene_name"], t=os.path.join(config["work_dir"], "temporal_gff"), o=config["gff_file"], r="CDS"
+  params: n=config["NCBI_gene_name"], t=os.path.join(config["work_dir"], "temporal_gff"), o=config["gff_file"], r=config["NCBI_gene_region"]
   message: "extracting positions from annotation file"
   shell: "bash src/create_gff.sh {input} {params.t} {params.n} {params.r} {params.o}"
 
