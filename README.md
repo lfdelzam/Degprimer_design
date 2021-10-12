@@ -37,8 +37,6 @@ and modify the parameters and save changes by taping `ctrl x` and tape `y`
 
   "gff_file": "/absolute/path/to/gff_with_selected_gene_annotation.gff", -- if file doesn't exits, it will be generated using "tar_gff_files" --
 
-  "tar_file_genomes", "NCBI_gene_name", and this field cannot be empty (path required). "no required if "gene_sequences" provided --
-
   "gene_sequences": "/absolute/path/to/gene_sequeneces.fna",  -- if not provided it will be generated using "tar_gff_files", "tar_file_genomes", and "gff_file" --
 
   "file_suffix_name": "your option",
@@ -47,13 +45,13 @@ and modify the parameters and save changes by taping `ctrl x` and tape `y`
 
   "trim_degeprime": "-min 0.9",
 
-  "degeneracies": "4,20,32",
+  "degeneracies": "4,12",
 
   "primer_sizes": "17,18,19,20,21,22",
 
-  "primer_selection_parameters": "-c 0.995 -g 35", -- -c stands for coverage (fraction) and -g for minimum GC content (%) --
+  "primer_selection_parameters": "-c 0.99 -g 40", -- -c stands for coverage (fraction) and -g for minimum GC content (%) --
 
-  "amplicon_size": "200,1000" -- minimum and maximum amplicon size --
+  "amplicon_size": "50,550" -- minimum and maximum amplicon size --
 
 command:
 `conda activate primers`
