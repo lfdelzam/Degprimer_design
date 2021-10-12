@@ -11,7 +11,7 @@ The pipeline uses the programs:
 
 [Degeprime](https://github.com/EnvGen/DEGEPRIME) v1.1.0
 
-[mfeprimer](https://github.com/quwubin/MFEprimer-3.0/releases/tag/v3.2.2) 3.2.2
+[mfeprimer](https://github.com/quwubin/MFEprimer-3.0/releases/tag/v3.2.3) 3.2.3
 
 ## Create conda environment ##
 

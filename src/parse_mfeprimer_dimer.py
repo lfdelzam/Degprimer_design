@@ -139,7 +139,7 @@ counter = 1
 with open(args.t, "w") as fo, open(args.o, "w") as fout:
     print("#{}\t{}\t{}\t{}\t{}\t{}\t{})".format("primer", "sequence 5'-> 3'", "revcomp", "degenerecy", "Length", "GC range", "TM range C"), file=fo)
     print("{} {} {} {} {}".format("#Gene_target", "Forward_primer", "sequence_(5'-> 3')", "Reverse_primer", "sequence_(5'-> 3')"), file=fout)
-
+    NO_pirmer=True
     for i in range(0, len(list_of_primers)):
         primer = list_of_primers[i]
         no_pair = PCR_problem[primer]
@@ -148,7 +148,7 @@ with open(args.t, "w") as fo, open(args.o, "w") as fout:
         TM_max = max(primers_info[primer]["TM"])
         for o in range(i + 1, len(list_of_primers)):
             primer_pair = list_of_primers[o]
-            if primer_pair not in no_pair:
+            if (len(primer_pair) > 0) and (primer_pair not in no_pair):
                 pos_final = primers_info[primer_pair]["pos"]
                 TM_min2 = min(primers_info[primer_pair]["TM"])
                 TM_max2 = max(primers_info[primer_pair]["TM"])
@@ -159,6 +159,7 @@ with open(args.t, "w") as fo, open(args.o, "w") as fout:
                 if size >= int(
                         args.m) and size <= int(
                         args.M) and delta_TMmax <= 5 and delta_TMmin <= 5:
+                    NO_pirmer=False
                     print("{} {} {} {} {}".format(args.s + "_" + str(counter),
                                                   primer + "_at_" + primers_info[primer]["pos"],
                                                   Sequences[primer],
@@ -175,3 +176,5 @@ with open(args.t, "w") as fo, open(args.o, "w") as fout:
                                                             max(primers_info[primer]["GC"]),
                                                             TM_min, TM_max),
                                                             file=fo)
+    if NO_pirmer:
+        print("There is no primer that fullfil the amplicon size criteria, or deltaTM is > 5", file=fout)                                                    
