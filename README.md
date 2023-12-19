@@ -55,7 +55,7 @@ and modify the parameters and save changes by taping `ctrl x` and tape `y`:
 	  "amplicon_size": "50,550" -- minimum and maximum amplicon size --
 	
 	
-run the pipeline using the commnad:
+run the pipeline using the commands:
 
 	`conda activate primers`
 	`snakemake -s design_primer --cores <number of threads>`
