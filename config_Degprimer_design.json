@@ -5,12 +5,13 @@
   "NCBI_gene_name": "your option",
   "NCBI_gene_region": "your option",
   "gff_file": "/absolute/path/to/selected_gene_gff_file",
-  "file_suffix_name": "your option",
   "gene_sequences": "/absolute/path/to/gene_sequences.fna",
   "muscle_params": "-maxiters 3",
   "trim_degeprime": "-min 0.9",
-  "degeneracies": "12",
-  "primer_sizes": "17,18,19,20,21,22,23,24,25,26",
-  "primer_selection_parameters": "-c 0.99 -g 40",
-  "amplicon_size": "50,550"
+  "degeneracies": "2,4",
+  "primer_sizes": "18,20",
+  "primer_selection_parameters": "-c 0.99 -g 50",
+  "amplicon_size": "50,550",
+  "threads":6,
+  "Output_suffix_name": "your option"
 }
