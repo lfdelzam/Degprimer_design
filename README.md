@@ -23,7 +23,7 @@ Degeprime and MFEprimer must be manually downloaded
 
 set pipeline parameters in config_primer_design.json using the command:
 `nano config_primer_design.json`
-and modify the parameters and save changes by taping `ctrl x` and tape `y`
+and modify the parameters and save changes by taping `ctrl x` and tape `y`:
 
 
 	  "work_dir": "/absolute/path/to/primer_design/",
