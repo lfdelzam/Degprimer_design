@@ -167,7 +167,7 @@ with open(args.t, "w") as fo, open(args.o, "w") as fout:
                                                   revcomp(Sequences[primer_pair])),
                                                   file=fout)
                     counter += 1
-         print("{}\t{}\t{}\t{}\t{}\t({}-{})\t({}-{})".format(primer + "_at_" + pos_ini,
+            print("{}\t{}\t{}\t{}\t{}\t({}-{})\t({}-{})".format(primer + "_at_" + pos_ini,
                                                             Sequences[primer],
                                                             revcomp(Sequences[primer_pair]),
                                                             degenerecy(Sequences[primer]),
