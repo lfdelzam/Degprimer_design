@@ -155,10 +155,13 @@ with open(args.t, "w") as fo, open(args.o, "w") as fout:
                 size = int(pos_final) - int(pos_ini)
                 delta_TMmin = int(abs(TM_min2 - TM_min))
                 delta_TMmax = int(abs(TM_max2 - TM_max))
+                themin=min(TM_min,TM_min2)
+                themax=max(TM_max2,TM_max)
+                delta_TMabs = int(abs(themax - themin))
 
                 if size >= int(
                         args.m) and size <= int(
-                        args.M) and delta_TMmax <= 5 and delta_TMmin <= 5:
+                        args.M) and delta_TMmax <= 5 and delta_TMmin <= 5 and delta_TMabs <= 5:
                     NO_pirmer=False
                     print("{} {} {} {} {}".format(args.s + "_" + str(counter),
                                                   primer + "_at_" + primers_info[primer]["pos"],
